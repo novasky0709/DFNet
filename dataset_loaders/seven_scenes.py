@@ -363,7 +363,7 @@ def main():
   import torchvision.transforms as transforms
   seq = 'heads'
   mode = 1
-  num_workers = 6
+  num_workers = 0
   transform = transforms.Compose([
     transforms.Scale(256),
     transforms.CenterCrop(224),

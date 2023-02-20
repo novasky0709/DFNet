@@ -485,10 +485,10 @@ def load_7Scenes_dataloader(args):
     else:
         train_set, val_set, bounds = fix_coord(args, train_set, val_set, rescale_coord=False)
 
-    train_dl = DataLoader(train_set, batch_size=args.batch_size, shuffle=True, num_workers=8) # debug
+    train_dl = DataLoader(train_set, batch_size=args.batch_size, shuffle=True, num_workers=0) # debug
     # train_dl = DataLoader(train_set, batch_size=args.batch_size, shuffle=False, num_workers=5, pin_memory=False)
-    val_dl = DataLoader(val_set, batch_size=args.val_batch_size, shuffle=False, num_workers=2)
-    test_dl = DataLoader(val_set, batch_size=1, shuffle=False, num_workers=2)
+    val_dl = DataLoader(val_set, batch_size=args.val_batch_size, shuffle=False, num_workers=0)
+    test_dl = DataLoader(val_set, batch_size=1, shuffle=False, num_workers=0)
 
     hwf = [train_set.H, train_set.W, train_set.focal]
     i_split = [i_train, i_val, i_test]

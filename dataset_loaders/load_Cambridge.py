@@ -408,9 +408,9 @@ def load_Cambridge_dataloader(args):
     if args.eval:
         train_shuffle=False
 
-    train_dl = DataLoader(train_set, batch_size=args.batch_size, shuffle=train_shuffle, num_workers=8) #num_workers=4 pin_memory=True
-    val_dl = DataLoader(val_set, batch_size=args.val_batch_size, shuffle=False, num_workers=2)
-    test_dl = DataLoader(val_set, batch_size=1, shuffle=False, num_workers=2)
+    train_dl = DataLoader(train_set, batch_size=args.batch_size, shuffle=train_shuffle, num_workers=0) #num_workers=4 pin_memory=True
+    val_dl = DataLoader(val_set, batch_size=args.val_batch_size, shuffle=False, num_workers=0)
+    test_dl = DataLoader(val_set, batch_size=1, shuffle=False, num_workers=0)
 
     hwf = [train_set.H, train_set.W, train_set.focal]
     i_split = [i_train, i_val, i_test]

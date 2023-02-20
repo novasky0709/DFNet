@@ -38,7 +38,7 @@ def train_on_epoch_nerfw(args, train_dl, H, W, focal, N_rand, optimizer, loss_fu
         torch.set_default_tensor_type('torch.cuda.FloatTensor')
         if N_rand is not None:
             rays_o, rays_d = get_rays(H, W, focal, torch.Tensor(pose))  # (H, W, 3), (H, W, 3)
-            coords = torch.stack(torch.meshgrid(torch.linspace(0, H-1, H), torch.linspace(0, W-1, W), indexing='ij'), -1)  # (H, W, 2)
+            coords = torch.stack(torch.meshgrid(torch.linspace(0, H-1, H), torch.linspace(0, W-1, W)), -1)  # (H, W, 2)
             coords = torch.reshape(coords, [-1,2])  # (H * W, 2)
             select_inds = np.random.choice(coords.shape[0], size=[N_rand], replace=False)  # (N_rand,)
             select_coords = coords[select_inds].long()  # (N_rand, 2)
@@ -269,5 +269,4 @@ def train():
         return
 
 if __name__=='__main__':
-
-    train()
+             train()
